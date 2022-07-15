@@ -16,6 +16,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { AddUserPageComponent } from './pages/add-user-page/add-user-page.component';
 import { UsersPageComponent } from './pages/users-page/users-page.component';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './ngRx/user/user.reducer';
 
 registerLocaleData(en);
 
@@ -34,7 +36,8 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,
-    NzMenuModule
+    NzMenuModule,
+    StoreModule.forRoot({user: userReducer}, {})
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
