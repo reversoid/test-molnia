@@ -10,3 +10,7 @@ export const remove = createAction(
   '[User Component] Remove',
   props<{ id: number }>()
 );
+
+export const loadMock = createAction(
+  '[User Component] loadMock'
+);

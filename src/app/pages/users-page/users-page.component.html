@@ -1,2 +1,6 @@
 <h1 nz-typography>Users</h1>
 <app-user-list [userList]="users$ | async"></app-user-list>
+<p *ngIf="!(users$ | async)?.length">The list is empty. You can 
+    <a [routerLink]="['/add']" routerLinkActive="router-link-active" >add new user</a>
+    or <button nz-button (click)="loadMockData()">load mock data</button>
+</p>

@@ -14,6 +14,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { UserCardComponent } from '../../components/specific/user-card/user-card.component';
 import { UserListComponent } from '../../components/specific/user-list/user-list.component';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     NzIconModule,
     NzRadioModule,
     NzCardModule,
+    RouterModule.forRoot([]),
   ]
 })
 export class UserModule { }
