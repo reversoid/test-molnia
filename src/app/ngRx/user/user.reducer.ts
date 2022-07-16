@@ -1,25 +1,42 @@
 import { createReducer, on } from '@ngrx/store';
+import { StorageService } from 'src/app/services/storage.service';
 import { IUser } from 'src/app/Types/types';
 import { mockUsers } from './mock';
 import { add, loadMock, remove, update } from './user.actions';
 
+const storage = new StorageService();
 
-export const initialState: IUser[] = mockUsers;
+export const initialState: IUser[] = storage.getUsers();
 let userCounter = initialState.length + 1;
 
 export const userReducer = createReducer(
   initialState,
-  on(add, (state, {user}) => [...state, {...user, id: userCounter++}]),
-  on(remove, (state, {id}) => state.filter((user) => user.id !== id)),
+  on(add, (state, {user}) => {
+    const newState = [...state, {...user, id: userCounter++}];
+    storage.setUsers(newState);
+    return newState;
+  }),
+
+  on(remove, (state, {id}) => {
+    const newState = state.filter((user) => user.id !== id);
+    storage.setUsers(newState);
+    return newState;
+  }),
+
   on(update, (state, {id, newData}) => {
     const index = state.findIndex((user) => user.id === id);
     if (index === -1) return state;
 
     const idToSave = state[index].id;
     const newState = [...state];
-    newState[index] = {...newData, id: idToSave};    
+    newState[index] = {...newData, id: idToSave};
+    storage.setUsers(newState);
     return newState;
   }),
 
-  on(loadMock, () => mockUsers),
+  on(loadMock, () => {
+    const newState = mockUsers;
+    storage.setUsers(newState);
+    return newState;
+  }),
 );
