@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, throwError } from 'rxjs';
-import { remove } from '../ngRx/user/user.actions';
-import { IUser } from '../Types/types';
+import { add, remove, update } from '../ngRx/user/user.actions';
+import { IUser, IUserPayload } from '../Types/types';
 
 @Injectable({
   providedIn: 'root',
@@ -14,10 +14,6 @@ export class UserService {
     this.users$ = _store.select('users');
   }
 
-  public removeUser(id: number) {
-    this._store.dispatch(remove({ id }));
-  }
-
   public getUserById(id: number) {
     return this.users$.pipe(
       map((users) => {
@@ -26,5 +22,17 @@ export class UserService {
         return foundUser;
       })
     );
+  }
+
+  public removeUser(id: number) {
+    this._store.dispatch(remove({ id }));
+  }
+
+  public updateUser(id: number, userData: IUserPayload) {
+    this._store.dispatch(update({ id, newData: userData }));
+  }
+
+  public addUser(userData: IUserPayload) {
+    this._store.dispatch(add({ user: userData }));
   }
 }

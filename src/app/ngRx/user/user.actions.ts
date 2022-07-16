@@ -11,6 +11,11 @@ export const remove = createAction(
   props<{ id: number }>()
 );
 
+export const update = createAction(
+  '[User Component] update',
+  props<{ id: number, newData: IUserPayload }>()
+);
+
 export const loadMock = createAction(
   '[User Component] loadMock'
 );

@@ -115,7 +115,7 @@
     </nz-form-control>
   </nz-form-item>
 
-  <nz-form-item ngClass="group">
+  <nz-form-item ngClass="group" formGroupName="legalAddress">
     <nz-form-label>Legal address</nz-form-label>
 
     <nz-form-control nzErrorTip="The field is required">
@@ -123,14 +123,14 @@
         <input
           nz-input
           placeholder="Country"
-          formControlName="legalAddressCountry"
+          formControlName="country"
         />
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="home">
-        <input nz-input placeholder="City" formControlName="legalAddressCity" />
+        <input nz-input placeholder="City" formControlName="city" />
       </nz-input-group>
     </nz-form-control>
 
@@ -139,7 +139,7 @@
         <input
           nz-input
           placeholder="Address"
-          formControlName="legalAddressAddress"
+          formControlName="address"
         />
       </nz-input-group>
     </nz-form-control>
@@ -155,15 +155,17 @@
           nzName="avatar"
           nzListType="picture-card"
           [nzShowUploadList]="false"
+          [nzBeforeUpload]="photoService.beforeUpload"
+          (nzChange)="photoHandleChange($event)"
         >
           <ng-container>
             <i class="upload-icon" nz-icon [nzType]="'plus'"></i>
             <div class="ant-upload-text">Upload</div>
           </ng-container>
           <img
-            *ngIf="user?.photo"
+            *ngIf="photoUrl()"
             style="width: 100%"
-            src="{{ user?.photo }}"
+            [src]="photoUrl()"
           />
         </nz-upload>
       </nz-input-group>
