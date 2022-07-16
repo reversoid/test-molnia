@@ -26,7 +26,7 @@ import { FormsModule } from '@angular/forms';
     UsersPageComponent,
     UserCardComponent,
     UserListComponent,
-    EditPageComponent
+    EditPageComponent,
   ],
   imports: [
     CommonModule,

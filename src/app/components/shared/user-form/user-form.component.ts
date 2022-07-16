@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IUser } from 'src/app/Types/types';
+import { Gender, IUser } from 'src/app/Types/types';
 
 @Component({
   selector: 'app-user-form',
@@ -13,8 +13,9 @@ export class UserFormComponent implements OnInit{
     return Boolean(this.user);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.genderValue = this.user ? Gender[this.user.gender] : '';
+  }
 
-  public genderValue = 'MALE';
-  
+  public genderValue: string = ''; 
 }

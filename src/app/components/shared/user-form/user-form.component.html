@@ -18,7 +18,7 @@
     <nz-form-label>Gender</nz-form-label>
 
     <nz-form-control nzErrorTip="The field is required">
-        <nz-radio-group>
+        <nz-radio-group [(ngModel)]="genderValue" [ngModelOptions]="{ standalone: true }">
             <label nz-radio nzValue="MALE">Male</label>
             <label nz-radio nzValue="FEMALE">Female</label>
           </nz-radio-group>
@@ -44,19 +44,19 @@
     <nz-form-label>Legal address</nz-form-label>
 
     <nz-form-control nzErrorTip="The field is required">
-      <nz-input-group nzPrefixIcon="phone">
+      <nz-input-group nzPrefixIcon="home">
         <input nz-input placeholder="Country" value="{{user?.legalAddress?.country}}"/>
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
-      <nz-input-group nzPrefixIcon="phone">
+      <nz-input-group nzPrefixIcon="home">
         <input nz-input placeholder="City" value="{{user?.legalAddress?.city}}"/>
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
-      <nz-input-group nzPrefixIcon="phone">
+      <nz-input-group nzPrefixIcon="home">
         <input nz-input placeholder="Address" value="{{user?.legalAddress?.address}}"/>
       </nz-input-group>
     </nz-form-control>
@@ -86,7 +86,7 @@
 
   <nz-form-item>
     <nz-form-control>
-      <button nz-button nzType="primary">Submit</button>
+      <button nz-button nzType="primary">Save</button>
     </nz-form-control>
   </nz-form-item>
 </form>
