@@ -8,12 +8,12 @@ const routes: Routes = [
   { path: 'add', component: AddUserPageComponent },
   {
     path: 'users',
+    component: UsersPageComponent,
     children: [
-      { path: '', component: UsersPageComponent },
       { path: ':id', component: EditPageComponent }],
   },
   {
-    path:'',
+    path:'**',
     pathMatch: 'full',
     redirectTo: 'users',
   },
