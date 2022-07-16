@@ -1,9 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 import { IUser } from 'src/app/Types/types';
+import { mockUsers } from './mock';
 import { add, remove } from './user.actions';
 
 
-export const initialState: IUser[] = [];
+export const initialState: IUser[] = mockUsers;
 let userCounter = 1;
 
 export const userReducer = createReducer(

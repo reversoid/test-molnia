@@ -2,8 +2,8 @@ export interface IUserPayload {
   name: string;
   surname: string;
   gender: Gender;
-  personalNumber: string;
-  mobileNumber: string;
+  personalPhone: string;
+  mobilePhone: string;
   legalAddress: {
     country: string;
     city: string;
