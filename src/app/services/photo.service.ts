@@ -5,7 +5,6 @@ import { UserModule } from '../modules/user/user.module';
 
 @Injectable({
   providedIn: 'root',
-  useClass: UserModule
 })
 export class PhotoService {
   public beforeUpload(
@@ -30,6 +29,7 @@ export class PhotoService {
       observer.complete();
     });
   }
+
   public getBase64(img: File, callback: (img: string) => void): void {
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result!.toString()));

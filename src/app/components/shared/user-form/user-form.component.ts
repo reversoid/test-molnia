@@ -30,7 +30,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
   public photoHandleChange(info: { file: NzUploadFile }): void {
     if (info.file.status !== 'uploading' || !this._photoIsFirstLoad()) return;
-
+    
     this.photoService.getBase64(info.file!.originFileObj!, (img: string) => {
       this.userForm.get('photo.url')?.patchValue(img);
     });
