@@ -5,7 +5,7 @@ import { add, loadMock, remove, update } from './user.actions';
 
 
 export const initialState: IUser[] = mockUsers;
-let userCounter = initialState.length;
+let userCounter = initialState.length + 1;
 
 export const userReducer = createReducer(
   initialState,
