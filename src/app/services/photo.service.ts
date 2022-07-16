@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
-import { UserModule } from '../modules/user/user.module';
 
 @Injectable({
   providedIn: 'root',

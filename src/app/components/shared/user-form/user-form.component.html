@@ -7,7 +7,7 @@
   <nz-form-item ngClass="group">
     <nz-form-control [nzErrorTip]="nameErrors">
       <nz-input-group nzPrefixIcon="user">
-        <input nz-input placeholder="Name" formControlName="name" />
+        <input nz-input placeholder="Name" formControlName="name" maxlength="50"/>
       </nz-input-group>
     </nz-form-control>
 
@@ -37,7 +37,7 @@
 
     <nz-form-control [nzErrorTip]="surnameErrors">
       <nz-input-group nzPrefixIcon="user">
-        <input nz-input placeholder="Surname" formControlName="surname" />
+        <input nz-input placeholder="Surname" formControlName="surname" maxlength="50"/>
       </nz-input-group>
     </nz-form-control>
 
@@ -76,6 +76,7 @@
           nz-input
           placeholder="Personal phone"
           formControlName="personalPhone"
+          maxlength="11"
         />
       </nz-input-group>
 
@@ -98,6 +99,7 @@
           nz-input
           placeholder="Mobile phone"
           formControlName="mobilePhone"
+          maxlength="9"
         />
       </nz-input-group>
 
@@ -115,7 +117,7 @@
     </nz-form-control>
   </nz-form-item>
 
-  <nz-form-item ngClass="group" formGroupName="legalAddress">
+  <nz-form-item ngClass="group" formGroupName="legalAddress" >
     <nz-form-label>Legal address</nz-form-label>
 
     <nz-form-control nzErrorTip="The field is required">
@@ -168,6 +170,7 @@
             [src]="photoUrl()"
           />
         </nz-upload>
+        <button nz-button nzDanger="true" nzType="primary" (click)="deletePhoto($event)">Delete photo</button>
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>

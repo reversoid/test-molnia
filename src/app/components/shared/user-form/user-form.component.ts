@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
@@ -41,14 +41,27 @@ export class UserFormComponent implements OnInit, OnDestroy {
     return this.userForm.controls['photo'].value['url'];
   }
 
+  public deletePhoto(event: any) {
+    event.preventDefault();
+    this.userForm.get('photo')?.get('url')?.setValue('');
+  }
+
+  public _markAllInvalidity = (controls: {[key: string]: AbstractControl | FormGroup}) => {
+    Object.values(controls).forEach((control) => {
+      if ('controls' in control) {
+        this._markAllInvalidity(control.controls);
+      }
+      
+      if (control.invalid) {
+        control.markAsDirty();
+        control.updateValueAndValidity({ onlySelf: true });
+      }
+    });
+  } 
+
   public submitForm() {
     if (!this.userForm.valid) {
-      Object.values(this.userForm.controls).forEach((control) => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
+      this._markAllInvalidity(this.userForm.controls);
       return;
     }
 

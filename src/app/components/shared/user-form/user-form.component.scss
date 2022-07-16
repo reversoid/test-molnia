@@ -3,3 +3,18 @@
         margin-bottom: 12px;
     }
 }
+nz-upload {
+    overflow: hidden;
+    ::ng-deep .ant-upload {
+        width: 102px;
+        height: 102px;
+        position: relative;
+    }
+    img {
+        width: 102px;
+        height: 102px;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+    }
+}
