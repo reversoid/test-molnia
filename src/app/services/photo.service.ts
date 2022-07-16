@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
+import { UserModule } from '../modules/user/user.module';
 
 @Injectable({
   providedIn: 'root',
+  useClass: UserModule
 })
 export class PhotoService {
-  constructor() {}
-
   public beforeUpload(
     file: NzUploadFile,
     _fileList: NzUploadFile[]
@@ -16,14 +16,12 @@ export class PhotoService {
       const isCorrectFormat =
         file.type === 'image/jpeg' || file.type === 'image/png';
       if (!isCorrectFormat) {
-        // this.msg.error('You can only upload JPG or PNG');
         console.log('format error');
         observer.complete();
         return;
       }
       const isLessThan700Kb = file.size! / 1024 < 700;
       if (!isLessThan700Kb) {
-        // this.msg.error('Image must smaller than 700Kb');
         console.log('size error');
         observer.complete();
         return;

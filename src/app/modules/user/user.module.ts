@@ -17,6 +17,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { RouterModule } from '@angular/router';
 import { EditPageComponent } from '../../pages/edit-page/edit-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    NzMessageModule,
   ]
 })
 export class UserModule { }

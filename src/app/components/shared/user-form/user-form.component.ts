@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { Subject, takeUntil } from 'rxjs';
 import { PhotoService } from 'src/app/services/photo.service';
 import { UserService } from 'src/app/services/user.service';
 import { Gender, IUser, IUserPayload } from 'src/app/Types/types';
@@ -10,15 +13,20 @@ import { Gender, IUser, IUserPayload } from 'src/app/Types/types';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss'],
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, OnDestroy {
   constructor(
     private _fb: FormBuilder,
     public photoService: PhotoService,
-    private _userService: UserService
+    private _userService: UserService,
+    private message: NzMessageService,
+    private _router: Router
   ) {}
+
   public userForm!: FormGroup;
 
   @Input() user?: IUser;
+
+  private _ngDestroySubscription$: Subject<any | undefined> = new Subject();
 
   public photoHandleChange(info: { file: NzUploadFile }): void {
     if (info.file.status !== 'uploading' || !this._photoIsFirstLoad()) return;
@@ -34,25 +42,28 @@ export class UserFormComponent implements OnInit {
   }
 
   public submitForm() {
-    if (this.userForm.valid) {
-
-      // process img, because in IUser it is a string, but in this form it is an object
-      const imgUrl = this.userForm.controls['photo'].value['url'];
-      const userForm = {...this.userForm.value, photo: imgUrl} as IUserPayload;
-
-      if (this._isForEditing()) {
-        this._userService.updateUser(this.user!.id, userForm);
-      } else {
-        this._userService.addUser(userForm);
-      }
-    } else {
+    if (!this.userForm.valid) {
       Object.values(this.userForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
         }
       });
+      return;
     }
+
+    // process img, because in IUser it is a string, but in this form it is an object
+    const imgUrl = this.userForm.controls['photo'].value['url'];
+    const userForm = { ...this.userForm.value, photo: imgUrl } as IUserPayload;
+
+    if (this._isForEditing())
+      this._userService.updateUser(this.user!.id, userForm);
+    else this._userService.addUser(userForm);
+
+    this.message
+      .success('Success!', { nzDuration: 800 })
+      .onClose.pipe(takeUntil(this._ngDestroySubscription$))
+      .subscribe(() => this._router.navigate(['users']));
   }
 
   ngOnInit(): void {
@@ -125,5 +136,10 @@ export class UserFormComponent implements OnInit {
 
   private _isForEditing() {
     return Boolean(this.user);
+  }
+
+  ngOnDestroy(): void {
+    this._ngDestroySubscription$.next(0);
+    this._ngDestroySubscription$.complete();
   }
 }
