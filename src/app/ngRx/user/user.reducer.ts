@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { StorageService } from 'src/app/services/storage.service';
-import { IUser } from 'src/app/Types/types';
+import { StorageService } from 'src/app/modules/user/services/storage.service';
+import { IUser } from 'src/app/modules/user/Types/types';
 import { mockUsers } from './mock';
 import { add, loadMock, remove, update } from './user.actions';
 

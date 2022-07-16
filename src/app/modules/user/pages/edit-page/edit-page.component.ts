@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { map, mergeMap, Subscription } from 'rxjs';
-import { UserService } from 'src/app/services/user.service';
-import { IUser } from 'src/app/Types/types';
+import { UserService } from 'src/app/modules/user/services/user.service';
+import { IUser } from 'src/app/modules/user/Types/types';
 
 @Component({
   selector: 'app-edit-page',

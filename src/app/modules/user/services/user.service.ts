@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, Observable, throwError } from 'rxjs';
-import { add, remove, update } from '../ngRx/user/user.actions';
+import { map, Observable } from 'rxjs';
+import { add, remove, update } from 'src/app/ngRx/user/user.actions';
 import { IUser, IUserPayload } from '../Types/types';
 
 @Injectable({

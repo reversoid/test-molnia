@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IUserPayload } from 'src/app/Types/types';
+import { IUserPayload } from 'src/app/modules/user/Types/types';
 
 export const add = createAction(
   '[User Component] Add',

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IUser } from 'src/app/Types/types';
+import { IUser } from 'src/app/modules/user/Types/types';
 
 @Component({
   selector: 'app-user-list',

@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Subject, takeUntil } from 'rxjs';
-import { PhotoService } from 'src/app/services/photo.service';
-import { UserService } from 'src/app/services/user.service';
-import { Gender, IUser, IUserPayload } from 'src/app/Types/types';
+import { PhotoService } from 'src/app/modules/user/services/photo.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
+import { Gender, IUser, IUserPayload } from 'src/app/modules/user/Types/types';
 
 @Component({
   selector: 'app-user-form',
@@ -74,9 +74,10 @@ export class UserFormComponent implements OnInit, OnDestroy {
     else this._userService.addUser(userForm);
 
     this.message
-      .success('Success!', { nzDuration: 800 })
+      .success('Success!', { nzDuration: 500 })
       .onClose.pipe(takeUntil(this._ngDestroySubscription$))
       .subscribe(() => this._router.navigate(['users']));
+    this.userForm.get('photo._isFirstTry')?.patchValue(true);
   }
 
   ngOnInit(): void {

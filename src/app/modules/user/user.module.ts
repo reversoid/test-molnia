@@ -4,18 +4,18 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { AddUserPageComponent } from 'src/app/pages/add-user-page/add-user-page.component';
-import { UserFormComponent } from 'src/app/components/shared/user-form/user-form.component';
-import { UsersPageComponent } from 'src/app/pages/users-page/users-page.component';
+import { AddUserPageComponent } from 'src/app/modules/user/pages/add-user-page/add-user-page.component';
+import { UserFormComponent } from 'src/app/modules/user/components/user-form/user-form.component';
+import { UsersPageComponent } from 'src/app/modules/user/pages/users-page/users-page.component';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
-import { UserCardComponent } from '../../components/specific/user-card/user-card.component';
-import { UserListComponent } from '../../components/specific/user-list/user-list.component';
+import { UserCardComponent } from 'src/app/modules/user/components/user-card/user-card.component';
+import { UserListComponent } from 'src/app/modules/user/components/user-list/user-list.component';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { RouterModule } from '@angular/router';
-import { EditPageComponent } from '../../pages/edit-page/edit-page.component';
+import { EditPageComponent } from 'src/app/modules/user/pages/edit-page/edit-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 
@@ -31,6 +31,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     NzTypographyModule,
     NzFormModule,
     NzInputModule,
@@ -40,7 +41,6 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     NzIconModule,
     NzRadioModule,
     NzCardModule,
-    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     NzMessageModule,
