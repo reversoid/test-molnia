@@ -1,63 +1,146 @@
-<form nz-form [nzLayout]="'vertical'" [formGroup]="userForm" (ngSubmit)="submitForm()">
+<form
+  nz-form
+  [nzLayout]="'vertical'"
+  [formGroup]="userForm"
+  (ngSubmit)="submitForm()"
+>
   <nz-form-item ngClass="group">
-    <nz-form-control nzErrorTip="The field is required">
+    <nz-form-control [nzErrorTip]="nameErrors">
       <nz-input-group nzPrefixIcon="user">
-        <input nz-input placeholder="Name" formControlName="name"/>
+        <input nz-input placeholder="Name" formControlName="name" />
       </nz-input-group>
     </nz-form-control>
 
-    <nz-form-control nzErrorTip="The field is required">
-        <nz-input-group nzPrefixIcon="user">
-          <input nz-input placeholder="Surname" formControlName="surname"/>
-        </nz-input-group>
-      </nz-form-control>
-  </nz-form-item>
+    <ng-template #nameErrors let-control>
+      <ng-container *ngIf="control.hasError('required'); else ErrorRoman"
+        >The field is required</ng-container
+      >
 
+      <ng-template #ErrorRoman>
+        <ng-container *ngIf="control.hasError('pattern'); else ErrorMin"
+          >Only roman letters</ng-container
+        >
+      </ng-template>
+
+      <ng-template #ErrorMin>
+        <ng-container *ngIf="control.hasError('minlength'); else ErrorMax"
+          >Min Length is 2</ng-container
+        >
+      </ng-template>
+
+      <ng-template #ErrorMax>
+        <ng-container *ngIf="control.hasError('maxlength')"
+          >Max length is 50</ng-container
+        >
+      </ng-template>
+    </ng-template>
+
+    <nz-form-control [nzErrorTip]="surnameErrors">
+      <nz-input-group nzPrefixIcon="user">
+        <input nz-input placeholder="Surname" formControlName="surname" />
+      </nz-input-group>
+    </nz-form-control>
+
+    <ng-template #surnameErrors let-control>
+      <ng-container *ngIf="control.hasError('required'); else ErrorRoman">The field is required</ng-container>
+
+      <ng-template #ErrorRoman>
+        <ng-container *ngIf="control.hasError('pattern'); else ErrorMin">Only roman letters</ng-container>
+      </ng-template>
+
+      <ng-template #ErrorMin>
+        <ng-container *ngIf="control.hasError('minlength'); else ErrorMax">Min Length is 2</ng-container>
+      </ng-template>
+
+      <ng-template #ErrorMax>
+        <ng-container *ngIf="control.hasError('maxlength')">Max length is 50</ng-container>
+      </ng-template>
+    </ng-template>
+  </nz-form-item>
 
   <nz-form-item>
     <nz-form-label>Gender</nz-form-label>
 
     <nz-form-control nzErrorTip="The field is required">
-        <nz-radio-group formControlName="gender">
-            <label nz-radio nzValue="MALE">Male</label>
-            <label nz-radio nzValue="FEMALE">Female</label>
-          </nz-radio-group>
+      <nz-radio-group formControlName="gender">
+        <label nz-radio nzValue="MALE">Male</label>
+        <label nz-radio nzValue="FEMALE">Female</label>
+      </nz-radio-group>
     </nz-form-control>
   </nz-form-item>
 
-  <nz-form-item  ngClass="group">
-    <nz-form-control nzErrorTip="The field is required">
+  <nz-form-item ngClass="group">
+    <nz-form-control [nzErrorTip]="personalPhoneErrors">
       <nz-input-group nzPrefixIcon="phone">
-        <input nz-input placeholder="Personal phone" formControlName="personalPhone"/>
+        <input
+          nz-input
+          placeholder="Personal phone"
+          formControlName="personalPhone"
+        />
       </nz-input-group>
+
+      <ng-template #personalPhoneErrors let-control>
+        <ng-container *ngIf="control.hasError('pattern'); else ErrorRequired">Must be only digits</ng-container>
+
+        <ng-template #ErrorRequired>
+          <ng-container *ngIf="control.hasError('required'); else ErrorLength">The field is required</ng-container>
+        </ng-template>
+
+        <ng-template #ErrorLength>
+          <ng-container *ngIf="control.hasError('minlength') || control.hasError('maxlength')">Must be 11 digits</ng-container>
+        </ng-template>
+      </ng-template>
     </nz-form-control>
 
-    <nz-form-control nzErrorTip="The field is required">
-        <nz-input-group nzPrefixIcon="phone">
-          <input nz-input placeholder="Mobile phone" formControlName="mobilePhone"/>
-        </nz-input-group>
-      </nz-form-control>
-  </nz-form-item>
+    <nz-form-control [nzErrorTip]="mobilelPhoneErrors">
+      <nz-input-group nzPrefixIcon="phone">
+        <input
+          nz-input
+          placeholder="Mobile phone"
+          formControlName="mobilePhone"
+        />
+      </nz-input-group>
 
+      <ng-template #mobilelPhoneErrors let-control>
+        <ng-container *ngIf="control.hasError('pattern'); else ErrorRequired">Must be only digits</ng-container>
+
+        <ng-template #ErrorRequired>
+          <ng-container *ngIf="control.hasError('required'); else ErrorLength">The field is required</ng-container>
+        </ng-template>
+
+        <ng-template #ErrorLength>
+          <ng-container *ngIf="control.hasError('minlength') || control.hasError('maxlength')">Must be 9 digits</ng-container>
+        </ng-template>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
 
   <nz-form-item ngClass="group">
     <nz-form-label>Legal address</nz-form-label>
 
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="home">
-        <input nz-input placeholder="Country" formControlName="legalAddressCountry"/>
+        <input
+          nz-input
+          placeholder="Country"
+          formControlName="legalAddressCountry"
+        />
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="home">
-        <input nz-input placeholder="City" formControlName="legalAddressCity"/>
+        <input nz-input placeholder="City" formControlName="legalAddressCity" />
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="home">
-        <input nz-input placeholder="Address" formControlName="legalAddressAddress"/>
+        <input
+          nz-input
+          placeholder="Address"
+          formControlName="legalAddressAddress"
+        />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
@@ -69,7 +152,6 @@
       <nz-input-group>
         <nz-upload
           class="avatar-uploader"
-          nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
           nzName="avatar"
           nzListType="picture-card"
           [nzShowUploadList]="false"
@@ -78,7 +160,11 @@
             <i class="upload-icon" nz-icon [nzType]="'plus'"></i>
             <div class="ant-upload-text">Upload</div>
           </ng-container>
-          <img *ngIf="user?.photo" style="width: 100%" src="{{user?.photo}}"/>
+          <img
+            *ngIf="user?.photo"
+            style="width: 100%"
+            src="{{ user?.photo }}"
+          />
         </nz-upload>
       </nz-input-group>
     </nz-form-control>
