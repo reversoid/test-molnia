@@ -1,0 +1,6 @@
+app-user-card {
+    width: 100%;
+}
+::ng-deep nz-card:not(:last-child) {
+    margin-bottom: 6px;
+}

@@ -13,9 +13,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { UserFormComponent } from './components/user-form/user-form.component';
-import { AddUserPageComponent } from './pages/add-user-page/add-user-page.component';
-import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './ngRx/user/user.reducer';
 import { UserModule } from './modules/user/user.module';
@@ -35,7 +32,7 @@ registerLocaleData(en);
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
-    StoreModule.forRoot({user: userReducer}, {}),
+    StoreModule.forRoot({users: userReducer}, {}),
     UserModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

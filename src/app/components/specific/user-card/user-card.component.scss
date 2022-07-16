@@ -1,0 +1,52 @@
+nz-card {
+    margin: 0;
+    max-width: 100%;
+    cursor: default;
+    
+    ::ng-deep .ant-card-body {
+        &::before, &::after {
+            display: none;
+        }
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    
+        h3 {
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            justify-content: space-between !important;
+            padding-top: 12px;
+            padding-bottom: 12px;
+
+            .buttons {
+                margin-left: auto;
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        :first-child {
+            margin-right: 12px;
+        }
+        @media (max-width: 400px) {
+            width: 100%;
+            flex-direction: column;
+            margin: 0;
+            gap: 6px;
+            button:first-child {
+                margin: 0;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    }
+}

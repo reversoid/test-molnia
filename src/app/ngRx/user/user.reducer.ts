@@ -5,7 +5,7 @@ import { add, remove } from './user.actions';
 
 
 export const initialState: IUser[] = mockUsers;
-let userCounter = 1;
+let userCounter = mockUsers.length + 1;
 
 export const userReducer = createReducer(
   initialState,
