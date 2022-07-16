@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 import { IUser } from 'src/app/Types/types';
 
 @Component({
@@ -8,4 +9,6 @@ import { IUser } from 'src/app/Types/types';
 })
 export class UserCardComponent {
   @Input() user!: IUser;
+
+  constructor(public userService: UserService) {}
 }

@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IUser } from 'src/app/Types/types';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent {
+  @Input() user?: IUser;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  public isForEditing() {
+    return Boolean(this.user);
   }
-
 }

@@ -3,6 +3,11 @@
   
   <div class="buttons">
     <button nz-button nzType="primary">Edit</button>
-    <button nz-button nzType="primary" nzDanger="danger">Remove</button>
+    <button
+      nz-button
+      nzType="primary"
+      nzDanger="danger"
+      (click)="userService.removeUser(user.id)"
+      >Remove</button>
   </div>
 </nz-card>
