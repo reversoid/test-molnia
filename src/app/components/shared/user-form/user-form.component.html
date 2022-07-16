@@ -1,14 +1,14 @@
-<form nz-form [nzLayout]="'vertical'">
+<form nz-form [nzLayout]="'vertical'" [formGroup]="userForm" (ngSubmit)="submitForm()">
   <nz-form-item ngClass="group">
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="user">
-        <input nz-input placeholder="Name" value="{{user?.name}}"/>
+        <input nz-input placeholder="Name" formControlName="name"/>
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
         <nz-input-group nzPrefixIcon="user">
-          <input nz-input placeholder="Surname" value="{{user?.surname}}"/>
+          <input nz-input placeholder="Surname" formControlName="surname"/>
         </nz-input-group>
       </nz-form-control>
   </nz-form-item>
@@ -18,7 +18,7 @@
     <nz-form-label>Gender</nz-form-label>
 
     <nz-form-control nzErrorTip="The field is required">
-        <nz-radio-group [(ngModel)]="genderValue" [ngModelOptions]="{ standalone: true }">
+        <nz-radio-group formControlName="gender">
             <label nz-radio nzValue="MALE">Male</label>
             <label nz-radio nzValue="FEMALE">Female</label>
           </nz-radio-group>
@@ -28,13 +28,13 @@
   <nz-form-item  ngClass="group">
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="phone">
-        <input nz-input placeholder="Personal phone" value="{{user?.personalPhone}}"/>
+        <input nz-input placeholder="Personal phone" formControlName="personalPhone"/>
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
         <nz-input-group nzPrefixIcon="phone">
-          <input nz-input placeholder="Mobile phone" value="{{user?.mobilePhone}}"/>
+          <input nz-input placeholder="Mobile phone" formControlName="mobilePhone"/>
         </nz-input-group>
       </nz-form-control>
   </nz-form-item>
@@ -45,19 +45,19 @@
 
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="home">
-        <input nz-input placeholder="Country" value="{{user?.legalAddress?.country}}"/>
+        <input nz-input placeholder="Country" formControlName="legalAddressCountry"/>
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="home">
-        <input nz-input placeholder="City" value="{{user?.legalAddress?.city}}"/>
+        <input nz-input placeholder="City" formControlName="legalAddressCity"/>
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="home">
-        <input nz-input placeholder="Address" value="{{user?.legalAddress?.address}}"/>
+        <input nz-input placeholder="Address" formControlName="legalAddressAddress"/>
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
@@ -86,7 +86,7 @@
 
   <nz-form-item>
     <nz-form-control>
-      <button nz-button nzType="primary">Save</button>
+      <button type="submit" nz-button nzType="primary">Save</button>
     </nz-form-control>
   </nz-form-item>
 </form>
