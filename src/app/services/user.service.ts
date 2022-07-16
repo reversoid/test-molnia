@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, Observable } from 'rxjs';
+import { map, Observable, throwError } from 'rxjs';
 import { remove } from '../ngRx/user/user.actions';
 import { IUser } from '../Types/types';
 
@@ -15,10 +15,16 @@ export class UserService {
   }
 
   public removeUser(id: number) {
-    this._store.dispatch(remove({id}));
+    this._store.dispatch(remove({ id }));
   }
 
   public getUserById(id: number) {
-    return this.users$.pipe(map((r) =>{ console.log(r); return r}));
+    return this.users$.pipe(
+      map((users) => {
+        const foundUser = users.find((user) => user.id === id);
+        if (!foundUser) throw new Error('User not found');
+        return foundUser;
+      })
+    );
   }
 }

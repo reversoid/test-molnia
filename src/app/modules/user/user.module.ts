@@ -16,6 +16,7 @@ import { UserListComponent } from '../../components/specific/user-list/user-list
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { RouterModule } from '@angular/router';
 import { EditPageComponent } from '../../pages/edit-page/edit-page.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { EditPageComponent } from '../../pages/edit-page/edit-page.component';
     NzRadioModule,
     NzCardModule,
     RouterModule,
+    FormsModule,
   ]
 })
 export class UserModule { }

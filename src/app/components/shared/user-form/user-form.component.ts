@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IUser } from 'src/app/Types/types';
 
 @Component({
@@ -6,10 +6,15 @@ import { IUser } from 'src/app/Types/types';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnInit{
   @Input() user?: IUser;
 
   public isForEditing() {
     return Boolean(this.user);
   }
+
+  ngOnInit(): void {}
+
+  public genderValue = 'MALE';
+  
 }

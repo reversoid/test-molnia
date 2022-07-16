@@ -2,13 +2,13 @@
   <nz-form-item ngClass="group">
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="user">
-        <input nz-input placeholder="Name" />
+        <input nz-input placeholder="Name" value="{{user?.name}}"/>
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
         <nz-input-group nzPrefixIcon="user">
-          <input nz-input placeholder="Surname" />
+          <input nz-input placeholder="Surname" value="{{user?.surname}}"/>
         </nz-input-group>
       </nz-form-control>
   </nz-form-item>
@@ -28,13 +28,13 @@
   <nz-form-item  ngClass="group">
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="phone">
-        <input nz-input placeholder="Personal phone" />
+        <input nz-input placeholder="Personal phone" value="{{user?.personalPhone}}"/>
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
         <nz-input-group nzPrefixIcon="phone">
-          <input nz-input placeholder="Mobile phone" />
+          <input nz-input placeholder="Mobile phone" value="{{user?.mobilePhone}}"/>
         </nz-input-group>
       </nz-form-control>
   </nz-form-item>
@@ -45,19 +45,19 @@
 
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="phone">
-        <input nz-input placeholder="Country" />
+        <input nz-input placeholder="Country" value="{{user?.legalAddress?.country}}"/>
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="phone">
-        <input nz-input placeholder="City" />
+        <input nz-input placeholder="City" value="{{user?.legalAddress?.city}}"/>
       </nz-input-group>
     </nz-form-control>
 
     <nz-form-control nzErrorTip="The field is required">
       <nz-input-group nzPrefixIcon="phone">
-        <input nz-input placeholder="Address" />
+        <input nz-input placeholder="Address" value="{{user?.legalAddress?.address}}"/>
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
@@ -78,7 +78,7 @@
             <i class="upload-icon" nz-icon [nzType]="'plus'"></i>
             <div class="ant-upload-text">Upload</div>
           </ng-container>
-          <!-- <img style="width: 100%" /> -->
+          <img *ngIf="user?.photo" style="width: 100%" src="{{user?.photo}}"/>
         </nz-upload>
       </nz-input-group>
     </nz-form-control>
