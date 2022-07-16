@@ -1,52 +1,89 @@
 nz-card {
-    margin: 0;
-    max-width: 100%;
-    cursor: default;
-    
+  margin: 0;
+  max-width: 100%;
+  cursor: default;
+
+  ::ng-deep .ant-card-body {
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      .user-name {
+        margin: 0;
+        max-width: 100%;
+        display: inline-block;
+      }
+
+      .card-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+        display: inline-block;
+        margin-right: 12px;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    :first-child {
+      margin-right: 12px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  nz-card {
     ::ng-deep .ant-card-body {
-        &::before, &::after {
-            display: none;
-        }
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      justify-content: space-between !important;
+      padding-top: 12px;
+      padding-bottom: 12px;
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        
-    
-        h3 {
+      h3 {
+        text-align: center;
+      }
+
+      .buttons {
+        margin-left: auto;
+      }
+      .user-info {
+        flex-direction: column;
+        gap: 6px;
+        .card-img {
             margin: 0;
         }
-
-        @media (max-width: 900px) {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
-            justify-content: space-between !important;
-            padding-top: 12px;
-            padding-bottom: 12px;
-
-            .buttons {
-                margin-left: auto;
-            }
-        }
+      }
+      .buttons {
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
-
-    .buttons {
-        display: flex;
-        :first-child {
-            margin-right: 12px;
-        }
-        @media (max-width: 400px) {
-            width: 100%;
-            flex-direction: column;
-            margin: 0;
-            gap: 6px;
-            button:first-child {
-                margin: 0;
-            }
-            button {
-                width: 100%;
-            }
-        }
+  }
+}
+@media (max-width: 400px) {
+  .buttons {
+    width: 100%;
+    flex-direction: column;
+    margin: 0;
+    gap: 6px;
+    button:first-child {
+      margin: 0;
     }
+    button {
+      width: 100%;
+    }
+  }
 }

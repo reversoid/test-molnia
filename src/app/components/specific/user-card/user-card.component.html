@@ -1,5 +1,9 @@
 <nz-card>
-  <h3 nz-typography>{{user.name}} {{user.surname}}</h3>
+  <div class="user-info">
+    <img class="card-img" src="{{user.photo ?? ''}}" alt="" srcset="">
+    <h3 class="user-name" nz-typography>{{user.name}} {{user.surname}}</h3>
+  </div>
+
   
   <div class="buttons">
     <button nz-button nzType="primary">Edit</button>
