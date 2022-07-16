@@ -1,1 +1,92 @@
-<p>user-form works!</p>
+<form nz-form [nzLayout]="'vertical'">
+  <nz-form-item ngClass="group">
+    <nz-form-control nzErrorTip="The field is required">
+      <nz-input-group nzPrefixIcon="user">
+        <input nz-input placeholder="Name" />
+      </nz-input-group>
+    </nz-form-control>
+
+    <nz-form-control nzErrorTip="The field is required">
+        <nz-input-group nzPrefixIcon="user">
+          <input nz-input placeholder="Surname" />
+        </nz-input-group>
+      </nz-form-control>
+  </nz-form-item>
+
+
+  <nz-form-item>
+    <nz-form-label>Gender</nz-form-label>
+
+    <nz-form-control nzErrorTip="The field is required">
+        <nz-radio-group>
+            <label nz-radio nzValue="MALE">Male</label>
+            <label nz-radio nzValue="FEMALE">Female</label>
+          </nz-radio-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item  ngClass="group">
+    <nz-form-control nzErrorTip="The field is required">
+      <nz-input-group nzPrefixIcon="phone">
+        <input nz-input placeholder="Personal phone" />
+      </nz-input-group>
+    </nz-form-control>
+
+    <nz-form-control nzErrorTip="The field is required">
+        <nz-input-group nzPrefixIcon="phone">
+          <input nz-input placeholder="Mobile phone" />
+        </nz-input-group>
+      </nz-form-control>
+  </nz-form-item>
+
+
+  <nz-form-item ngClass="group">
+    <nz-form-label>Legal address</nz-form-label>
+
+    <nz-form-control nzErrorTip="The field is required">
+      <nz-input-group nzPrefixIcon="phone">
+        <input nz-input placeholder="Country" />
+      </nz-input-group>
+    </nz-form-control>
+
+    <nz-form-control nzErrorTip="The field is required">
+      <nz-input-group nzPrefixIcon="phone">
+        <input nz-input placeholder="City" />
+      </nz-input-group>
+    </nz-form-control>
+
+    <nz-form-control nzErrorTip="The field is required">
+      <nz-input-group nzPrefixIcon="phone">
+        <input nz-input placeholder="Address" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label>Photo</nz-form-label>
+
+    <nz-form-control>
+      <nz-input-group>
+        <nz-upload
+          class="avatar-uploader"
+          nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          nzName="avatar"
+          nzListType="picture-card"
+          [nzShowUploadList]="false"
+        >
+          <ng-container>
+            <i class="upload-icon" nz-icon [nzType]="'plus'"></i>
+            <div class="ant-upload-text">Upload</div>
+          </ng-container>
+          <!-- <img style="width: 100%" /> -->
+        </nz-upload>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary">Submit</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

@@ -71,6 +71,11 @@ nz-header {
 
 nz-content {
   margin: 24px;
+  min-height: fit-content;
+}
+
+nz-layout {
+  overflow: auto;
 }
 
 .inner-content {

@@ -18,15 +18,13 @@ import { AddUserPageComponent } from './pages/add-user-page/add-user-page.compon
 import { UsersPageComponent } from './pages/users-page/users-page.component';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './ngRx/user/user.reducer';
+import { UserModule } from './modules/user/user.module';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserFormComponent,
-    AddUserPageComponent,
-    UsersPageComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +35,8 @@ registerLocaleData(en);
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
-    StoreModule.forRoot({user: userReducer}, {})
+    StoreModule.forRoot({user: userReducer}, {}),
+    UserModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
