@@ -11,4 +11,8 @@ export class UserCardComponent {
   @Input() user!: IUser;
 
   constructor(public userService: UserService) {}
+
+  public getEditUrl(id: number) {
+    return `/users/${id}`;
+  }
 }

@@ -15,6 +15,7 @@ import { UserCardComponent } from '../../components/specific/user-card/user-card
 import { UserListComponent } from '../../components/specific/user-list/user-list.component';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { RouterModule } from '@angular/router';
+import { EditPageComponent } from '../../pages/edit-page/edit-page.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RouterModule } from '@angular/router';
     AddUserPageComponent,
     UsersPageComponent,
     UserCardComponent,
-    UserListComponent
+    UserListComponent,
+    EditPageComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,7 @@ import { RouterModule } from '@angular/router';
     NzIconModule,
     NzRadioModule,
     NzCardModule,
-    RouterModule.forRoot([]),
+    RouterModule,
   ]
 })
 export class UserModule { }

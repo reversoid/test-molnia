@@ -6,7 +6,10 @@
 
   
   <div class="buttons">
-    <button nz-button nzType="primary">Edit</button>
+    <button
+      [routerLink]="getEditUrl(user.id)"
+      nz-button
+      nzType="primary">Edit</button>
     <button
       nz-button
       nzType="primary"
