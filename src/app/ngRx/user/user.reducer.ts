@@ -37,6 +37,7 @@ export const userReducer = createReducer(
   on(loadMock, () => {
     const newState = mockUsers;
     storage.setUsers(newState);
+    if (userCounter <= newState.length) userCounter = newState.length + 1;
     return newState;
   }),
 );
