@@ -40,7 +40,7 @@ nz-card {
 
   .buttons {
     display: flex;
-    :first-child {
+    a:first-child {
       margin-right: 12px;
     }
   }
@@ -67,7 +67,7 @@ nz-card {
         flex-direction: column;
         gap: 6px;
         .card-img {
-            margin: 0;
+          margin: 0;
         }
       }
       .buttons {
@@ -78,16 +78,20 @@ nz-card {
   }
 }
 @media (max-width: 400px) {
-  .buttons {
-    width: 100%;
-    flex-direction: column;
-    margin: 0;
-    gap: 6px;
-    button:first-child {
-      margin: 0;
-    }
-    button {
-      width: 100%;
+  nz-card {
+    ::ng-deep .ant-card-body {
+      .buttons {
+        width: 100%;
+        flex-direction: column;
+        margin: 0;
+        gap: 6px;
+        a:first-child {
+          width: 100%;
+        }
+        button {
+          width: 100%;
+        }
+      }
     }
   }
 }

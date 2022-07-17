@@ -1,19 +1,25 @@
 <nz-card>
   <div class="user-info">
-    <img class="card-img" src="{{user.photo || './assets/profileImg.jpg'}}" alt="" srcset="">
-    <h3 class="user-name" nz-typography>{{user.name}} {{user.surname}}</h3>
+    <img
+      class="card-img"
+      src="{{ user.photo || './assets/profileImg.jpg' }}"
+      alt=""
+      srcset=""
+    />
+    <h3 class="user-name" nz-typography>{{ user.name }} {{ user.surname }}</h3>
   </div>
 
   <div class="buttons">
-    <button
-      [routerLink]="getEditUrl(user.id)"
-      nz-button
-      nzType="primary">Edit</button>
+    <a [routerLink]="getEditUrl(user.id)">
+      <button nz-button nzType="primary">Edit</button>
+    </a>
     <button
       nz-button
       nzType="primary"
       nzDanger="danger"
       (click)="userService.removeUser(user.id)"
-      >Remove</button>
+    >
+      Remove
+    </button>
   </div>
 </nz-card>
